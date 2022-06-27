@@ -1,0 +1,12 @@
+{
+  "name": "genshin-wails",
+  "outputfilename": "genshin-wails",
+  "frontend:install": "yarn install",
+  "frontend:build": "yarn run build",
+  "frontend:dev:watcher": "yarn run dev",
+  "frontend:dev:serverUrl": "http://localhost:3000",
+  "author": {
+    "name": "yzqdev",
+    "email": "yzqdev@outlook.com"
+  }
+}
