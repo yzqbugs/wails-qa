@@ -1,9 +1,11 @@
 <template>
-  <router-view />
+not found
 </template>
 
-<script setup>
-
+<script>
+export default {
+  name: "NotFound"
+}
 </script>
 
 <style scoped>
