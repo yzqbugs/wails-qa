@@ -1,17 +1,20 @@
 <script lang="ts" setup>
 import {reactive} from 'vue'
-import {SetConf, SetOutDir} from "../../wailsjs/go/main/Config";
-
+import {SayHello} from "../../wailsjs/go/main/Config";
+import {configStore} from '@/store/store'
+let store =configStore();
 const data = reactive({
   name: "",
   resultText: "Please enter your name below 👇",
 })
-
 async function setconf(){
-  let res=await SetOutDir()
+ let res=await  SayHello()
   data.resultText=res
 }
 
+async function setPinia(){
+   data.resultText=await store.hello
+}
 
 </script>
 
@@ -20,6 +23,7 @@ async function setconf(){
     <div id="result" class="result">{{ data.resultText }}</div>
 
     <button class="btn" @click="setconf">setconf</button>
+    <button class="btn" @click="setPinia">setPinia</button>
   </main>
 </template>
 
