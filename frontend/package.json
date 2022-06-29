@@ -6,15 +6,18 @@
     "dev": "vite",
     "build": "vite build",
     "build:ts": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "prettier --write src/**/*.{vue,ts,css,scss,html,js} --ignore-path src/wailsjs/**"
   },
   "dependencies": {
     "pinia": "^2.0.14",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@vitejs/plugin-vue": "^2.3.3",
+    "prettier": "^2.7.1",
     "typescript": "^4.7.4",
     "vite": "^2.9.13",
     "vue-tsc": "^0.34.17"

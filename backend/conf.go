@@ -1,4 +1,4 @@
-package main
+package backend
 
 import (
 	"context"
@@ -18,5 +18,3 @@ func (c *Config) SayHello() string {
 func NewConf() *Config {
 	return &Config{}
 }
-
-

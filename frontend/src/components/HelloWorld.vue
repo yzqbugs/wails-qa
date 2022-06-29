@@ -1,21 +1,28 @@
 <script lang="ts" setup>
-import {reactive} from 'vue'
-import {SayHello} from "../../wailsjs/go/main/Config";
-import {configStore} from '@/store/store'
-let store =configStore();
+import { reactive } from 'vue'
+import { SayHello } from '../../wailsjs/go/backend/Config'
+import { configStore } from '@/store/store'
+let store = configStore()
 const data = reactive({
-  name: "",
-  resultText: "Please enter your name below 👇",
+  name: '',
+  resultText: 'Please enter your name below 👇',
 })
-async function setconf(){
- let res=await  SayHello()
-  data.resultText=res
+async function setconf() {
+  let res = await SayHello()
+  if (res) {
+    console.log(`%csetconf success`, `color:red;font-size:16px;background:transparent`)
+  }
+  data.resultText = res
 }
-
-async function setPinia(){
-   data.resultText=await store.hello
+async function getPiniaHello(){
+  data.resultText=await  store.helloAction()
 }
-
+async function setPinia() {
+  if (await store.hello) {
+    console.log(`%cpinia success`, `color:red;font-size:16px;background:transparent`)
+  }
+  data.resultText = await store.hello
+}
 </script>
 
 <template>
@@ -24,6 +31,7 @@ async function setPinia(){
 
     <button class="btn" @click="setconf">setconf</button>
     <button class="btn" @click="setPinia">setPinia</button>
+    <button class="btn" @click="getPiniaHello">getPiniaHello</button>
   </main>
 </template>
 

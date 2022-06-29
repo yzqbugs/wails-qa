@@ -1,20 +1,22 @@
-import {defineStore} from "pinia";
-import {SayHello} from "../../wailsjs/go/main/Config";
-
+import { defineStore } from 'pinia'
+import { SayHello } from '../../wailsjs/go/backend/Config'
 
 export const configStore = defineStore({
-    id: 'config',
-    state: () => {
-        return {
-            name: 'hello'
-        }
+  id: 'config',
+  state: () => {
+    return {
+      name: 'hello',
+    }
+  },
+  getters: {
+    async hello() {
+      let res = await SayHello()
+      return res
     },
-    getters: {
-        async hello() {
-            let res = await SayHello()
-            return res
-        }
-    },
-    actions: {}
-
+  },
+  actions: {
+    async helloAction(){
+      return await  SayHello()
+    }
+  },
 })
